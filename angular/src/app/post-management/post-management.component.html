@@ -1,0 +1,22 @@
+<p>post-management works!</p>
+<div class="post-list">
+  <h2>Post Management</h2>
+
+  <form (ngSubmit)="addPost()">
+    <input
+      type="text"
+      [(ngModel)]="newPostText"
+      placeholder="Add a new post"
+      name="newPostText"
+      required
+    />
+    <button type="submit">Add Post</button>
+  </form>
+
+  <ul>
+    <li *ngFor="let post of posts; let i = index">
+      <span>{{ post.text }}</span>
+      <button (click)="deletePost(i)">Delete</button>
+    </li>
+  </ul>
+</div>
