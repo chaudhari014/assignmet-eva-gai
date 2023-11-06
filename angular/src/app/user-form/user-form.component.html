@@ -1,0 +1,61 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+    <div *ngIf="form.get('name')?.hasError('required')">Name is required</div>
+    <div *ngIf="form.get('name')?.hasError('minlength')">
+      minimum three character required
+    </div>
+    <div *ngIf="form.get('name')?.hasError('pattern')">
+      Name should contain only letters
+    </div>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="text" id="email" formControlName="email" />
+    <div *ngIf="form.get('email')?.hasError('required')">Email is required</div>
+    <div *ngIf="form.get('email')?.hasError('email')">Invalid email format</div>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" formControlName="password" />
+    <div *ngIf="form.get('password')?.hasError('required')">
+      Password is required
+    </div>
+    <div *ngIf="form.get('password')?.hasError('minlength')">
+      Password is too short
+    </div>
+  </div>
+
+  <div>
+    <label for="age">Age:</label>
+    <input type="number" id="age" formControlName="age" />
+    <div *ngIf="form.get('age')?.hasError('required')">Age is required</div>
+    <div *ngIf="form.get('age')?.hasError('min')">Age is too low</div>
+    <div *ngIf="form.get('age')?.hasError('max')">Age is too high</div>
+  </div>
+
+  <div>
+    <label for="country">Country:</label>
+    <select id="country" formControlName="country">
+      <option value="">Select a country</option>
+      <option value="us">India</option>
+      <!-- Add more options as needed -->
+    </select>
+    <div *ngIf="form.get('country')?.hasError('required')">
+      Country is required
+    </div>
+  </div>
+
+  <div>
+    <label>Acceptance:</label>
+    <input type="checkbox" formControlName="acceptance" />
+    <div *ngIf="form.get('acceptance')?.hasError('required')">
+      Acceptance is required
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
